@@ -1,23 +1,26 @@
 import './App.css';
 import {lazy, Suspense} from 'react';
-import load from './loading.gif';
-import spinner from './spinner.png';
-
+import Spinner from './code-split/spin/spinner';
+import logo from './code-split/img/logo.png';
 
 const Intro = lazy(() => import('./code-split/Intro'));
-const Book = lazy(() => import('./code-split/Book'));
-const Clans = lazy(() => import('./code-split/Clans'));
+const Last = lazy(() => import('./code-split/Last'));
+const Middle = lazy(() => import('./code-split/Middle'));
 
 
 
 function App() {
   return (
-    <div className="App">
-     
+    <div className="App" align='center'>
+      <header className='App-header'>
+        <img src={logo} alt="" />
+      </header>
 
-      <main className="body">
+           
+
+      <main className="tbody">
         
-      <Suspense fallback={ <img src={spinner} alt="" /> } >
+      <Suspense fallback={ <Spinner />} >
         <Intro />
       </Suspense>
 
@@ -29,8 +32,8 @@ The original film (Star Wars), retroactively subtitled Episode IV: A New Hope (1
 All nine films of the 'Skywalker saga' were nominated for Academy Awards (with wins going to the first two released) and were commercially successful. Together with the theatrical live action spin-off films Rogue One (2016) and Solo (2018), the combined box office revenue of the films equates to over US$10 billion, and it is currently the second-highest-grossing film franchise of all time.
         </p>
 
-      <Suspense fallback={ <img src={spinner} alt="" />  }>
-        <Book />
+      <Suspense fallback={ <Spinner />  }>
+        <Middle />
       </Suspense>
 
         <p>
@@ -49,8 +52,8 @@ On January 15, 2012 the book was re-released with additional content and illustr
 The book was released again in August 2014 as part of a Deluxe Box Set with Book of Sith that included two art prints depicting figures from Sith and Jedi history, and again in September 2016 as Star Wars: Secrets of the Galaxy Deluxe Boxed Set with the Imperial Handbook and Bounty Hunter Code.
         </p>
 
-      <Suspense fallback={ <img src={load} alt="" />  } >
-        <Clans />
+      <Suspense fallback={ <Spinner /> } >
+        <Last />
       </Suspense>
 
         <p>
